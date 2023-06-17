@@ -9,10 +9,38 @@ import javax.swing.JOptionPane;
 
 public class RetornaLocal extends javax.swing.JFrame {
 
-    public RetornaLocal() {
+    public int  idLocal;
+    
+    
+    
+    public RetornaLocal() throws SQLException {
         initComponents();
+        testaID();
+
+    }
+    
+    public void testaID() throws SQLException
+    {
+        Local local = new Local();
+       // local.retornaLocal(idLocal);
+        local.retornaLocal(17);
+        
+        txtnomelocal.setText(local.getNome_local());
+        txtEndereco.setText(local.getEndereco_local());
+        txtfone.setText(local.getTelefone_local());
+
+        
     }
 
+    public void exportaId(int ID) throws SQLException
+    {
+        
+        idLocal = ID;
+        System.out.println("sdd - "+ idLocal);
+        //local.retornaLocal(idLocal);
+
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -21,8 +49,8 @@ public class RetornaLocal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         txtnomelocal = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtEndereco = new javax.swing.JTextField();
+        txtfone = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -43,14 +71,14 @@ public class RetornaLocal extends javax.swing.JFrame {
             }
         });
 
-        jTextField3.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
+        txtEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtEnderecoActionPerformed(evt);
             }
         });
 
-        jTextField4.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
+        txtfone.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\lesilva\\OneDrive - Stefanini\\Documents\\NetBeansProjects\\TelasProjeto\\src\\main\\java\\TelasProjeto\\logo2.JPG")); // NOI18N
         jLabel1.setText("jLabel1");
@@ -82,9 +110,9 @@ public class RetornaLocal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtnomelocal, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtfone, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -111,14 +139,14 @@ public class RetornaLocal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtnomelocal, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtfone, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -129,9 +157,7 @@ public class RetornaLocal extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,16 +168,16 @@ public class RetornaLocal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtEnderecoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     EscolherAcao escolheacao = new EscolherAcao();
@@ -165,20 +191,7 @@ public class RetornaLocal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtnomelocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnomelocalActionPerformed
-    Local local = new Local();
-    Acao acao = new Acao ();
-    txtnomelocal.setEditable(false);
-   
-    if (local.getZona_local().equals("Zona Leste") && (acao.getNome_acao().equals("Coleta Seletiva"))){
-        try {
-            
-            local.retornaLocal(17);
-            txtnomelocal.setText("ECO PONTO LESTE");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao encontrar local");                 
-      }
 
-    }
 
     }//GEN-LAST:event_txtnomelocalActionPerformed
 
@@ -212,7 +225,11 @@ public class RetornaLocal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RetornaLocal().setVisible(true);
+                try {
+                    new RetornaLocal().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(RetornaLocal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -224,8 +241,8 @@ public class RetornaLocal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtEndereco;
+    private javax.swing.JTextField txtfone;
     private javax.swing.JTextField txtnomelocal;
     // End of variables declaration//GEN-END:variables
 }

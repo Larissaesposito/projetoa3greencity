@@ -125,9 +125,20 @@ public class TelaLogin extends javax.swing.JFrame {
             if(usu.Entrar(usu))
             {
                 JOptionPane.showMessageDialog(null, "Login realizado com sucesso! Bem vindo ao Green City!");          
+                
+                if (txtEmail.getText().equals("larissa@usjt.com"))
+                {
+                    TelaAdministrador telaadmin = new TelaAdministrador(); 
+                    telaadmin.setVisible(true);
+                    dispose();
+                }   
+                else
+                {
+                
                 EscolherAcao escolheacao = new EscolherAcao(); 
                 escolheacao.setVisible(true);
                 dispose();
+                }
             }
             else
                 JOptionPane.showMessageDialog(null, "Erro ao realizar o login do usuario. Tente novamente ou cadastre - se.");
@@ -136,11 +147,7 @@ public class TelaLogin extends javax.swing.JFrame {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        if (txtEmail.getText().equals("larissa@usjt.com")){
-            TelaAdministrador telaadmin = new TelaAdministrador(); 
-            telaadmin.setVisible(true);
-            dispose();
-        }                   
+                
          
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -214,20 +214,35 @@ public class EscolherAcao extends javax.swing.JFrame {
     }//GEN-LAST:event_cbzonaAncestorAdded
     }  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    Local local = new Local();
-    Acao acao = new Acao();
+        
+        ResultSet rs;
+        int id_local = 0;
+        Local local = new Local();
+        Acao acao = new Acao();
         String itemselecionadozona = (String) cbzona.getSelectedItem();
         String itemselecionadoacao = (String) cbacao.getSelectedItem();
         
         local.setZona_local(itemselecionadozona);
         acao.setNome_acao(itemselecionadoacao);
+        
+        id_local = 17;
+        
     
     JOptionPane.showMessageDialog(null, "Certo, suas escolhas foram : Acao :" + itemselecionadoacao + " Zona : " + itemselecionadozona + "?");
        
-        
-        RetornaLocal retornalocal = new RetornaLocal ();
+      
+        try {
+            RetornaLocal retornalocal = new RetornaLocal ();
+            retornalocal.exportaId(17);
             retornalocal.setVisible(true);
+            
             dispose();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EscolherAcao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

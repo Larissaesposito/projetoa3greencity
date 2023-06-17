@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class Local {
     
@@ -129,26 +130,34 @@ public class Local {
         
         //retornar Local pelo ID
         public void retornaLocal (int idLocal) throws SQLException {
-      
-            String sql = ("SELECT"
+                    
+            String sql = ("SELECT "
                     + "nome_local, "
-                    + "endereco_local, "
+                    + "endereco_local, " 
                     + "telefone_local "
-                    + "FROM tb_local WHERE id_local = '"+idLocal+"'");
-            try
-               (Connection conn = ConnectionFactory.obtemConexao();
-                PreparedStatement ps = conn.prepareStatement(sql)){
-                ResultSet resultSet = ps.executeQuery();
+                    + "FROM tb_local  where id_local = ?;");
             
-                while (resultSet.next()) {
-                    this.nome_local = (resultSet.getString(nome_local));
-                    ps.setString(2, endereco_local);
-                    ps.setString(3, telefone_local);
-                }
-            }
-            catch (SQLException e) {
+            try(Connection conn = ConnectionFactory.obtemConexao())
+            {
+               PreparedStatement ps = conn.prepareStatement(sql);
+               ps.setInt(1, idLocal); 
+               System.out.println("id retorna sql - " + idLocal);
+
+
+                ResultSet resultSet = ps.executeQuery();
+
+                   while (resultSet.next()) {
+                   nome_local = resultSet.getString("nome_local");
+                   endereco_local = resultSet.getString("endereco_local");   
+                   telefone_local = resultSet.getString("telefone_local"); 
+                   
+                   System.out.println("nome local - " + nome_local);
+                   }
+
                 
+                 System.out.println(" sql - " + sql);
             }
+            
         }
         
         
