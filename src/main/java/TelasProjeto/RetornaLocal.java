@@ -13,17 +13,15 @@ public class RetornaLocal extends javax.swing.JFrame {
     
     
     
-    public RetornaLocal() throws SQLException {
+ public RetornaLocal() throws SQLException {
         initComponents();
-        testaID();
 
     }
     
     public void testaID() throws SQLException
     {
-        Local local = new Local();
-       // local.retornaLocal(idLocal);
-        local.retornaLocal(17);
+    Local local = new Local();
+        local.retornaLocal(idLocal);
         
         txtnomelocal.setText(local.getNome_local());
         txtEndereco.setText(local.getEndereco_local());
@@ -34,10 +32,10 @@ public class RetornaLocal extends javax.swing.JFrame {
 
     public void exportaId(int ID) throws SQLException
     {
-        
-        idLocal = ID;
+      idLocal = ID;
         System.out.println("sdd - "+ idLocal);
         //local.retornaLocal(idLocal);
+        testaID();
 
     }
     

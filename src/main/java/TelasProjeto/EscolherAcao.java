@@ -214,7 +214,7 @@ public class EscolherAcao extends javax.swing.JFrame {
     }//GEN-LAST:event_cbzonaAncestorAdded
     }  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+             
         ResultSet rs;
         int id_local = 0;
         Local local = new Local();
@@ -224,25 +224,74 @@ public class EscolherAcao extends javax.swing.JFrame {
         
         local.setZona_local(itemselecionadozona);
         acao.setNome_acao(itemselecionadoacao);
+        System.out.println("acao - " + acao.getNome_acao());
+        System.out.println("zona - " + local.getZona_local());
         
-        id_local = 17;
+        if ("Coleta seletiva".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Leste"))){
+            id_local = 17;}
         
+        else if ("Plantio de árvores".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Norte"))){
+            id_local = 14;}
+        
+        else if ("Descarte de lixo eletrônico".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Sul"))){
+            id_local = 22;}
+        
+        else if ("Descarte de óleo de cozinha".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Oeste"))){
+            id_local = 28;}
+        
+        else if ("Coleta seletiva".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Norte"))){
+            id_local = 18;}
+        
+        else if ("Coleta seletiva".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Sul"))){
+            id_local = 19;}
+        
+        else if ("Coleta seletiva".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Oeste"))){
+            id_local = 20;}
+        
+        else if ("Plantio de árvores".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Leste"))){
+            id_local = 13;}
+        
+        else if ("Plantio de árvores".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Sul"))){
+            id_local = 15;}
+        
+        else if ("Plantio de árvores".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Oeste"))){
+            id_local = 16;}
+        
+        else if ("Descarte de lixo eletrônico".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Leste"))){
+            id_local = 23;}
+        
+        else if ("Descarte de lixo eletrônico".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Norte"))){
+            id_local = 21;}
+        
+        else if ("Descarte de lixo eletrônico".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Oeste"))){
+            id_local = 24;}
+        
+        else if ("Descarte de óleo de cozinha".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Leste"))){
+            id_local = 27;}
+        
+        else if ("Descarte de óleo de cozinha".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Sul"))){
+            id_local = 26;}
+        
+        else if ("Descarte de óleo de cozinha".equals(acao.getNome_acao()) && (itemselecionadozona.equals("Zona Norte"))){
+            id_local = 25;}
     
-    JOptionPane.showMessageDialog(null, "Certo, suas escolhas foram : Acao :" + itemselecionadoacao + " Zona : " + itemselecionadozona + "?");
-       
-      
-        try {
+        else {
+            id_local = 0;
+        }
+     
+        JOptionPane.showMessageDialog(null, "Certo, suas escolhas foram : Ação :" + itemselecionadoacao + " e Zona : " + itemselecionadozona + "?");
+        
+    try {
             RetornaLocal retornalocal = new RetornaLocal ();
-            retornalocal.exportaId(17);
+            
             retornalocal.setVisible(true);
+            retornalocal.exportaId(id_local);
             
             dispose();
             
         } catch (SQLException ex) {
             Logger.getLogger(EscolherAcao.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-            
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
